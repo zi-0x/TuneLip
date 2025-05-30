@@ -22,9 +22,9 @@ console.log(data);
           <select
             onChange={()=>{}}
             value=""
-            className="bg-violet-200 text-purple-800 p-3 text-sm rounded-lg outline-none sm:mt-0 mt-5"
+            className="bg-purple-200 text-purple-900 p-3 text-xl font-bold rounded-lg outline-none sm:mt-0 mt-5 "
             >
-             {genres.map((genre) => <option key={genre.value} value={genre.value}>{genre.title}</option>)}
+             {genres.map((genre) => <option key={genre.value} value={genre.value}>{genre.title}  </option>)}
           </select>
            </div>
         <div className="flex flex-wrap sm:justify-start justify-center gap-8">
