@@ -12,7 +12,7 @@ const Discover = () => {
     const genreTitle='Pop';
    
     if (isFetching) return <Loader title="Loading songs..."/>;
-
+console.log(data);
     if (error) return <Error />;
   
     return(
