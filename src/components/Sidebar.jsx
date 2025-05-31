@@ -13,7 +13,7 @@ const NavLinks=({handLeClick}) =>(
       <NavLink
         key={item.name} 
         to={item.to}
-        className="flex flex-row justify-start items-center my-8 text-lg font-bold text-fuchsia-800 hover:text-fuchsia-600 "
+        className="flex flex-row justify-start items-center my-8 text-lg font-bold text-fuchsia-800 h-10 rounded-md hover:bg-gradient-to-tl from-yellow-300  to-purple-400"
         onClick={()=> handLeClick && handleClick()}
         >
           <item.icon className="w-6 h-7 mr-2"/>
@@ -39,7 +39,7 @@ const Sidebar = () => {
     <RiCloseLine className="w-6 h-6 text-purple-200 mr-2 hover:text-yellow-400" onClick={() => setMobileMenuOpen(false)}/>
     ) : (<HiOutlineMenu className="w-6 h-6 text-purple-200 mr-2 hover:text-yellow-400" onClick={() => setMobileMenuOpen(true)}/>)}
     </div>
-    <div className={`absolute top-0 h-screen w-1/2 bg-gradient-to-l from-amber-200  to-purple-400  z-10 p-6 md:hidden smooth-transition ${mobileMenuOpen ? 'left-0' : 'left-full'}`}>
+    <div className={`absolute top-0 h-screen w-2/5 bg-purple-200  z-10 p-6 md:hidden smooth-transition ${mobileMenuOpen ? 'left-0' : 'left-full'}`}>
       <img src={logo} alt="logo" className="w-full h-14 object-contain"/>
       <NavLinks handLeClick={() => setMobileMenuOpen(false)}/>
     </div>
