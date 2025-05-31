@@ -23,7 +23,7 @@ const SongCard = ({ song = {}, isPlaying, activeSong, i, data }) => {
   const artistName = attributes?.artistName || 'Unknown Artist';
 
   return (
-    <div className="flex flex-col w-[250px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer">
+    <div className="flex flex-col w-[200px] h-[275px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer">
       <div className="relative w-full h-56 group">
         <div className={`absolute inset-0 flex justify-center items-center bg-violet-900 bg-opacity-40 group-hover:flex  ${
           activeSong?.attributes?.name === attributes?.name 

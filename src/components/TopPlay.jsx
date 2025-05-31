@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom' ;
 import { useSelector, useDispatch } from 'react-redux' ;
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode } from 'swiper';
+import { FreeMode as FreeModeModule } from 'swiper/modules';
   
 import PlayPause from './PlayPause';
 import { playPause, setActiveSong } from '../redux/features/playerSlice';
@@ -12,16 +12,16 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 
 const TopPlayCard=({song,i, isPlaying, activeSong, handlePauseClick, handlePlayClick})=>(   
-  <div className="w-full flex flex-row items-center text-purple-200 hover:text-yellow-400 py-2 p-4 rounded-lg cursor-pointer mb-2 ">
+  <div className="w-full  flex flex-row items-center   py-2 p-4 rounded-lg cursor-pointer mb-2 ">
     <h3 className="font-bold text-base text-purple-200 mr-3">{i+1}.</h3>
-    <div className="flex-1 flex-row justify-between items-center">
-      <img className="w-20 h-20 rounded-lg" src={song?.hub?.image || song?.attributes?.artwork?.url}/>
+    <div className="flex-1 flex flex-row justify-between items-center">
+      <img className="w-10 h-10 rounded-lg" src={song?.hub?.image || song?.attributes?.artwork?.url}/>
       <div className="flex-1 flex flex-col justify-center mx-3">
         <Link to={`/songs/${song.id}`}>
-         <p className="text-xl font-bold text-purple-200">{song?.attributes?.name}</p>
+         <p className="text-md font-bold text-purple-200 ">{song?.attributes?.name}</p>
         </Link>
         <Link to={`/artists/${song.artists?.data[0]?.id}`}>
-         <p className="text-base text-purple-300 mt-1">{song?.attributes?.artistName}</p>
+         <p className="text-base text-purple-200 hover:text-yellow-500 hover:underline mt-1">{song?.attributes?.artistName}</p>
         </Link>
       </div>
     </div>
@@ -58,12 +58,12 @@ const TopPlay = () => {
 
     return(
       
-      <div ref ={divRef} className=" xl:ml-6 ml-0 xl:mb-0 mb-6 flex-1 xl:max-w-[500px] max-w-full flex flex-col">
+      <div ref ={divRef} className=" xl:ml-6 ml-0 xl:mb-0 mb-6 flex-1 ] xl:max-w-[500px] max-w-full flex flex-col">
         <div className="w-full flex flex-col"> 
           <div className="flex flex-row justify-between items-center">
             <h2 className="text-purple-200 font-bold text-2xl">Top Charts</h2>
             <Link to="/top-charts">
-              <p className="text-purple-300 text-base cursor-pointer hover:text-yellow-400 ">See More</p>
+              <p className="text-purple-200 text-base cursor-pointer hover:text-yellow-500 ">See More</p>
             </Link>
           </div>
           <div className="mt-4 flex flex-col gap-1">
@@ -84,18 +84,17 @@ const TopPlay = () => {
            <div className="flex flex-row justify-between items-center">
             <h2 className="text-purple-200 font-bold text-2xl">Top Artists</h2>
             <Link to="/top-artists">
-              <p className="text-purple-300 text-base cursor-pointer hover:text-yellow-300   ">See More</p>
+              <p className="text-purple-200 text-base cursor-pointer hover:text-yellow-500 ">See More</p>
             </Link>
           </div>
 
       <Swiper 
         slidesPerView="auto"
         spaceBetween={15}
-        freeMode
-        centeredSlides
-        centeredSlidesBounds
-        modules={[FreeMode]}
+        freeMode={true}
+        modules={[FreeModeModule]}
         className="mt-4"
+        
       >
          {topPlays?.map((song,i)=>(
          <SwiperSlide
@@ -105,15 +104,13 @@ const TopPlay = () => {
           >
       
         <Link to={`/artists/${song?.relationships?.artists?.data[0]?.id}`}>
-        <img src={song?.hub?.image || song?.attributes?.artwork?.url} alt="name" className="rounded-full w-full object-cover"/>
+        <img src={song?.hub?.image || song?.attributes?.artwork?.url} alt="artist name" className="rounded-full w-full object-cover"/>
         </Link>
           </SwiperSlide> 
          ))}
       </Swiper>
 
        </div>
-   
-          
 
           </div>
 
