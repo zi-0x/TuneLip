@@ -9,8 +9,12 @@ const SongDetails = () => {
  const { songid } = useParams();
  const {activeSong, isPlaying}=useSelector((state) => state.player);
  const {data: songData, isFetching:isFetchingSongDetails}= useGetSongDetailsQuery({songid});
- console.log(songid);
- 
+ console.log(songid, songData);
+
+ const songId = songData?.data[0]?.id;
+ const lyricId = songData?.resources?.['shazam-songs']?.[songId]?.relationships?.lyrics?.data[0]?.id;
+ const lyric = songData?.resources?.lyrics?.[lyricId]?.attributes?.text; 
+
  return (
  <div className="flex flex-col">
      <DetailsHeader artistId="" songData={songData}/>
@@ -19,9 +23,9 @@ const SongDetails = () => {
             Lyrics:
         </h2>
         <div className="mt-5"> 
-          {songData?.sections[1]?.type === 'LYRICS'
-            ? songData?.sections[1]?.text.map((Line, i) => (
-              <p key={`lyrics-${Line}-${i}`} className="text-yellow-400 text-base my-1">{Line}</p>
+          {lyricId
+            ? lyric.map((Line, i) => (
+              <p key={`lyrics-${Line}-${i}`} className="text-purple-300 text-base my-1">{Line}</p>
             ))
             : 
               <p className="text-yellow-400 text-base my-1">Sorry, No lyrics found!</p>
@@ -33,3 +37,5 @@ const SongDetails = () => {
 };
 
 export default SongDetails;
+
+

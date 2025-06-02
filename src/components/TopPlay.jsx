@@ -18,7 +18,7 @@ const TopPlayCard=({song,i, isPlaying, activeSong, handlePauseClick, handlePlayC
       <img className="w-10 h-10 rounded-lg" src={song?.hub?.image || song?.attributes?.artwork?.url}/>
       <div className="flex-1 flex flex-col justify-center mx-3">
         <Link to={`/songs/${song.id}`}>
-         <p className="text-md font-bold text-purple-200 ">{song?.attributes?.name}</p>
+         <p className="text-md font-bold text-purple-200 hover:underline ">{song?.attributes?.name}</p>
         </Link>
         <Link to={`/artists/${song.artists?.data[0]?.id}`}>
          <p className="text-base text-purple-200 hover:text-yellow-500 hover:underline mt-1">{song?.attributes?.artistName}</p>
