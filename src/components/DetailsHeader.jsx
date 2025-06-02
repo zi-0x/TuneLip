@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 const DetailsHeader = ({artistId, artistData, songData}) => {
 const artist= artistData?.artists[artistId]?.attributes
-console.log(artistId, artistData, songData, artist, genreNames);
+console.log(artistId, artistData, songData, artist);
 const songId = songData?.data[0]?.id || songData?.id;
 
 
@@ -25,7 +25,7 @@ const songId = songData?.data[0]?.id || songData?.id;
           <p className="text-base text-purple-300 mt-2">
             {artistId 
               ? artist?.genreNames?.[0] 
-              : songData?.genres?.primary || 'No Genre'
+              : songData?.resources?.['shazam-songs']?.[songId]?.attributes?.genres.primary || 'No Genre'
               }
              
           </p>     
@@ -33,6 +33,7 @@ const songId = songData?.data[0]?.id || songData?.id;
         </div>
       </div>
     </div>
+    
   </div>
   
 )
